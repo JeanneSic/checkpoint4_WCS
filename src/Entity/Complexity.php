@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\DifficultyRepository;
+use App\Repository\ComplexityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=DifficultyRepository::class)
+ * @ORM\Entity(repositoryClass=ComplexityRepository::class)
  */
-class Difficulty
+class Complexity
 {
     /**
      * @ORM\Id
@@ -25,7 +25,7 @@ class Difficulty
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Recipe::class, mappedBy="difficulty")
+     * @ORM\OneToMany(targetEntity=Recipe::class, mappedBy="complexity")
      */
     private $recipes;
 
@@ -63,7 +63,7 @@ class Difficulty
     {
         if (!$this->recipes->contains($recipe)) {
             $this->recipes[] = $recipe;
-            $recipe->setDifficulty($this);
+            $recipe->setComplexity($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Difficulty
     {
         if ($this->recipes->removeElement($recipe)) {
             // set the owning side to null (unless already changed)
-            if ($recipe->getDifficulty() === $this) {
-                $recipe->setDifficulty(null);
+            if ($recipe->getComplexity() === $this) {
+                $recipe->setComplexity(null);
             }
         }
 

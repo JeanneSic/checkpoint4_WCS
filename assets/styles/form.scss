@@ -1,0 +1,21 @@
+//checkbox CGU register
+input[type="checkbox"].demo2 {
+  display: none;
+}
+
+input[type="checkbox"].demo2 + label::before {
+  cursor: pointer;
+  content:'';
+  border: 1px solid #E27F80;
+  padding: 0 0.6rem;
+  margin-right: 0.3rem;
+}
+
+input[type="checkbox"].demo2:checked + label::before {
+  cursor: pointer;
+  background-color: #E27F80;
+}
+
+.form-check {
+  padding-left: 0!important;
+}

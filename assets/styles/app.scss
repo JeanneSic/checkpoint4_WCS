@@ -1,10 +1,18 @@
 @import 'variables';
 @import 'home';
+@import 'form';
 
 body {
   font-family: $main-text;
   font-weight: $weight-main-text;
   background-color: #e6e6e6;
 }
+
+h1{
+  font-family: $title;
+  text-align: center;
+  font-size: xx-large;
+}
+
 
 @import '~bootstrap/scss/bootstrap';

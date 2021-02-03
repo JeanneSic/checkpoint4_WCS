@@ -23,14 +23,14 @@ class RecipeFixtures extends Fixture implements DependentFixtureInterface
                 ->setTitle($faker->sentence($nbWords = 6, $variableNbWords = true))
                 ->setCreatedAt($dateCreation)
                 ->setUpdatedAt($dateCreation)
-                ->setImage($faker->imageUrl())
+                ->setImage('meal.jpg')
                 ->setIngredients($faker->text(100))
                 ->setKitchenUtensil($faker->text(20))
                 ->setInstruction($faker->text(200))
                 ->setNumberOfPerson(rand(1,10))
                 ->setTimeOfPreparation($timeOfPrep)
                 ->setCreatedBy($this->getReference('user'))
-                ->setDifficulty($this->getReference('difficulty_' . rand(0,2)))
+                ->setComplexity($this->getReference('difficulty_' . rand(0,2)))
                 ->setRecipeType($this->getReference('recipeType_' . rand(0,6)));
             $manager->persist($recipe);
             $i++;
