@@ -3,11 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{ encore_entry_link_tags('app') }}
         {% block stylesheets %}{% endblock %}
-
-        {% block javascripts %}{% endblock %}
     </head>
     <body>
+    {% for category, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
         {% block body %}{% endblock %}
     </body>
+    {{ encore_entry_script_tags('app') }}
+    {% block javascripts %}{% endblock %}
 </html>
