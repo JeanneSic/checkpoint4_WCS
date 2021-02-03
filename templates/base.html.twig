@@ -2,7 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" type="image/jpg" href="{{ asset('build/images/picto/favicon.png') }}" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+        <title>{% block title %}JSI Recipe{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {{ encore_entry_link_tags('app') }}
         {% block stylesheets %}{% endblock %}
