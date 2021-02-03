@@ -63,16 +63,22 @@ class Recipe
     private $updated_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity=difficulty::class, inversedBy="recipeType")
+     * @ORM\ManyToOne(targetEntity=difficulty::class, inversedBy="recipes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $difficulty;
 
     /**
-     * @ORM\ManyToOne(targetEntity=recipeType::class, inversedBy="recipes")
+     * @ORM\ManyToOne(targetEntity=RecipeType::class, inversedBy="recipes")
      * @ORM\JoinColumn(nullable=false)
      */
     private $recipeType;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="createdRecipes")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $createdBy;
 
     public function getId(): ?int
     {
@@ -199,14 +205,26 @@ class Recipe
         return $this;
     }
 
-    public function getRecipeType(): ?recipeType
+    public function getRecipeType(): ?RecipeType
     {
         return $this->recipeType;
     }
 
-    public function setRecipeType(?recipeType $recipeType): self
+    public function setRecipeType(?RecipeType $recipeType): self
     {
         $this->recipeType = $recipeType;
+
+        return $this;
+    }
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?User $createdBy): self
+    {
+        $this->createdBy = $createdBy;
 
         return $this;
     }

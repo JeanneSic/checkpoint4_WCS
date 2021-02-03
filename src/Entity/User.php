@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -39,6 +41,16 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=100)
      */
     private $pseudo;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Recipe::class, mappedBy="createdBy")
+     */
+    private $createdRecipes;
+
+    public function __construct()
+    {
+        $this->createdRecipes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -126,6 +138,36 @@ class User implements UserInterface
     public function setPseudo(string $pseudo): self
     {
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Recipe[]
+     */
+    public function getCreatedRecipes(): Collection
+    {
+        return $this->createdRecipes;
+    }
+
+    public function addCreatedRecipe(Recipe $createdRecipe): self
+    {
+        if (!$this->createdRecipes->contains($createdRecipe)) {
+            $this->createdRecipes[] = $createdRecipe;
+            $createdRecipe->setCreatedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCreatedRecipe(Recipe $createdRecipe): self
+    {
+        if ($this->createdRecipes->removeElement($createdRecipe)) {
+            // set the owning side to null (unless already changed)
+            if ($createdRecipe->getCreatedBy() === $this) {
+                $createdRecipe->setCreatedBy(null);
+            }
+        }
 
         return $this;
     }
