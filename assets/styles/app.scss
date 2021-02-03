@@ -1,1 +1,10 @@
-@import "~bootstrap/scss/bootstrap";
+@import 'variables';
+@import 'home';
+
+body {
+  font-family: $main-text;
+  font-weight: $weight-main-text;
+  background-color: #e6e6e6;
+}
+
+@import '~bootstrap/scss/bootstrap';
