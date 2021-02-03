@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <h1 class="mb-4">Inscription</h1>
+<div class="container">
+    {{ form_start(registrationForm) }}
+    <div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        {{ form_widget(registrationForm.pseudo) }}
+    </div>
+    <div class="form-group col-lg-6 col-md-6 col-sm-6">
+        {{ form_widget(registrationForm.email) }}
+    </div>
+    </div>
+    <div class="row">
+        <div class="container mb-2">
+            <span> Votre mot de passe doit contenir au minimum 8 caractères, à savoir : au moins une lettre minuscule, une lettre majuscule et un chiffre. </span>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+            {{ form_widget(registrationForm.password.first) }}
+            {{ form_errors(registrationForm.password.first) }}
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+            {{ form_widget(registrationForm.password.second) }}
+            {{ form_errors(registrationForm.password.second) }}
+        </div>
+    </div>
+    <div class="form-group">
+        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_errors(registrationForm.agreeTerms) }}
+    </div>
+
+    <div class="mt-4 d-flex justify-content-end">
+        <button class="btn btn-primary mr-4" type="submit">
+            S'inscrire
+        </button>
+        <a class="btn btn-secondary" href="{{ path('app_login') }}">J'ai déjà un compte</a>
+    </div>
+    {{ form_end(registrationForm) }}
+</div>
+{% endblock %}

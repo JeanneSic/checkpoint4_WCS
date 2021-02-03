@@ -2,11 +2,11 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Difficulty;
+use App\Entity\Complexity;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
-class DifficultyFixtures extends Fixture
+class ComplexityFixtures extends Fixture
 {
     const LEVEL = [
         "Facile",
@@ -14,10 +14,10 @@ class DifficultyFixtures extends Fixture
         "Difficile",
     ];
 
-        public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager)
     {
         foreach (self::LEVEL as $key => $levelName) {
-            $difficulty = new Difficulty();
+            $difficulty = new Complexity();
             $difficulty->setName($levelName);
             $manager->persist($difficulty);
             $this->addReference('difficulty_'.$key, $difficulty);
