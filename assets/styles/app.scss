@@ -16,5 +16,10 @@ h1{
   font-size: xx-large;
 }
 
+.h2-home {
+  font-family: $main-text;
+  font-weight: $weight-main-text;
+  text-align: center;
+}
 
 @import '~bootstrap/scss/bootstrap';

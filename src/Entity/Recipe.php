@@ -89,7 +89,7 @@ class Recipe
      * @ORM\ManyToOne(targetEntity=RecipeType::class, inversedBy="recipes")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $recipeType;
+    private $recipeTypes;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="createdRecipes")
@@ -216,14 +216,14 @@ class Recipe
         return $this;
     }
 
-    public function getRecipeType(): ?RecipeType
+    public function getRecipeTypes(): ?RecipeType
     {
-        return $this->recipeType;
+        return $this->recipeTypes;
     }
 
-    public function setRecipeType(?RecipeType $recipeType): self
+    public function setRecipeTypes(?RecipeType $recipeTypes): self
     {
-        $this->recipeType = $recipeType;
+        $this->recipeTypes = $recipeTypes;
 
         return $this;
     }

@@ -77,7 +77,7 @@ class NewRecipeType extends AbstractType
                     'placeholder' => 'Nombre de parts',
                 ],
             ])
-            ->add('recipeType', EntityType::class, [
+            ->add('recipeTypes', EntityType::class, [
                 'class' => RecipeType::class,
                 'expanded' => false,
                 'placeholder' => 'Type de plat',
