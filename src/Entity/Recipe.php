@@ -2,11 +2,15 @@
 
 namespace App\Entity;
 
+use Symfony\Component\HttpFoundation\File\File;
 use App\Repository\RecipeRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=RecipeRepository::class)
+ * @Vich\Uploadable
  */
 class Recipe
 {
@@ -26,6 +30,25 @@ class Recipe
      * @ORM\Column(type="string", length=255)
      */
     private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="recipe_images", fileNameProperty="image")
+     * @var File|null
+     * @Assert\Image(
+     *     uploadErrorMessage="Une erreur est survenue lors du téléchargement.",
+     *     maxSize="20000000",
+     *     maxSizeMessage="Votre image est trop grande. Veuillez selectionner une image de moins de 20Mo.",
+     *     detectCorrupted=true,
+     *     sizeNotDetectedMessage= true,
+     *     mimeTypes = {
+     *          "image/png",
+     *          "image/jpeg",
+     *          "image/jpg",
+     *      },
+     *     mimeTypesMessage="Seuls les formats png, jpeg, jpg sont acceptés."
+     * )
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="text")
@@ -227,5 +250,19 @@ class Recipe
         $this->complexity = $complexity;
 
         return $this;
+    }
+
+    public function setImageFile(File $image = null):Recipe
+    {
+        $this->imageFile = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 }

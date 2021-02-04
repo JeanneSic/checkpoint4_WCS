@@ -31,7 +31,7 @@ class RecipeFixtures extends Fixture implements DependentFixtureInterface
                 ->setTimeOfPreparation($timeOfPrep)
                 ->setCreatedBy($this->getReference('user'))
                 ->setComplexity($this->getReference('difficulty_' . rand(0,2)))
-                ->setRecipeType($this->getReference('recipeType_' . rand(0,6)));
+                ->setRecipeType($this->getReference('recipeType_' . rand(0,5)));
             $manager->persist($recipe);
             $i++;
         }

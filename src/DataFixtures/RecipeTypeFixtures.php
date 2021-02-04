@@ -13,7 +13,6 @@ class RecipeTypeFixtures extends Fixture
         "Petit-déjeuner",
         "Apéritif",
         "Accompagnement",
-        "Apéritif",
         "Dessert",
         "Entrée",
         "Plat principal"

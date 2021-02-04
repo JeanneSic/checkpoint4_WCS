@@ -20,7 +20,7 @@ class RecipeTypeRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return RecipeType[] Returns an array of RecipeType objects
+    //  * @return NewRecipeType[] Returns an array of NewRecipeType objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class RecipeTypeRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?RecipeType
+    public function findOneBySomeField($value): ?NewRecipeType
     {
         return $this->createQueryBuilder('r')
             ->andWhere('r.exampleField = :val')

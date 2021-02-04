@@ -7,7 +7,7 @@
     <div class="container d-flex justify-content-center flex-column recipe-show">
         <div class="row mb-4">
             <div class=" col-lg-9 col-12 d-flex justify-content-center">
-                <img class="img-fluid" src="{{ asset('build/images/recettes/meal.jpg') }}" width="800" height="600" alt="picture of {{ recipe.title }}" >
+                <img class="img-fluid" src="{{ vich_uploader_asset(recipe, 'imageFile') }}" width="800" height="600" alt="picture of {{ recipe.title }}" >
             </div>
             <div class=" col-lg-3 col-12 ">
                 <p><span>Nombre de parts:</span> {{ recipe.numberofperson }}</p>

@@ -19,3 +19,18 @@ input[type="checkbox"].demo2:checked + label::before {
 .form-check {
   padding-left: 0!important;
 }
+
+.custom-file-label::after {
+  content: "PARCOURIR";
+}
+
+.fileUpload :hover {
+  cursor: pointer;
+}
+
+.custom-file {
+  label {
+    color: #E27F80;
+    font-weight: $weight-secondary-title;
+  }
+}
