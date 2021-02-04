@@ -10,7 +10,8 @@ GUIDE INSTALLATION:
 - parametrer .env.local (MAILER + base de données)
 - composer install
 - yarn install
+- yarn encore dev
 - php bin/console d:d:c
-- php bin/console d:m:m
+- php bin/console d: m:m
 - php bin/console d:f:l 
 
