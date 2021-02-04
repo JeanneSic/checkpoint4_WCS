@@ -6,19 +6,25 @@
 <header>
     <h1 class="mb-4"> Toutes les recettes </h1>
 </header>
+    {% if recipes is defined %}
     <div class="container">
     <div class="card-deck justify-content-around">
         {% for recipe in recipes %}
         <div class="col-lg-4 col-md-4 col-sm-4 col-12 mb-4 d-flex">
+            <a href="{{ path("recipe_show", {id:recipe.id}) }}">
             <div class="card flex-fill">
                 <img class="card-img-top" src="{{ asset('build/images/recettes/meal.jpg') }}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ recipe.title }}</h5>
                 </div>
             </div>
+            </a>
         </div>
         {% endfor %}
     </div>
     </div>
+    {% else %}
+        <p> Il n'existe aucune recette pour le moment.</p>
+    {% endif %}
 {% endblock %}
 
