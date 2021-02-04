@@ -1,0 +1,26 @@
+.recipe-show {
+  span {
+    font-family: $main-text;
+    font-weight: $weight-secondary-title;
+  }
+
+  h2 {
+    font-family: $title;
+  }
+  .ingredients {
+    border: 2px dashed #E27F80;
+  }
+  .category {
+    border: 2px dashed #E27F80;
+  }
+
+  .ingredient-ustensile {
+    text-align: center;
+
+    p {
+      text-align: justify;
+    }
+  }
+}
+
+
